@@ -1,0 +1,844 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00E0DFC6504F600A28E955BA /* Pods_audioRecTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6D174BC186C4F4E7F504E4E /* Pods_audioRecTests.framework */; };
+		5A5A4078212A2F0E00302124 /* AWSAuthCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5A4077212A2F0E00302124 /* AWSAuthCore.framework */; };
+		5A5A407A212A2F0E00302124 /* AWSCognito.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5A4079212A2F0E00302124 /* AWSCognito.framework */; };
+		5A5A407C212A2F0E00302124 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5A407B212A2F0E00302124 /* AWSCore.framework */; };
+		5A5A407E212A2F0E00302124 /* AWSMobileClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5A407D212A2F0E00302124 /* AWSMobileClient.framework */; };
+		5A5A4080212A2F0E00302124 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5A407F212A2F0E00302124 /* AWSS3.framework */; };
+		5A5A4082212A2FBE00302124 /* S3TransferUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5A4081212A2FBE00302124 /* S3TransferUtility.swift */; };
+		5A5A4084212A331F00302124 /* recording.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5A5A4083212A331F00302124 /* recording.gif */; };
+		5AB7DCA7210FC76600464C93 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB7DCA6210FC76600464C93 /* ExternalAccessory.framework */; };
+		5AB7DCAA2110D34A00464C93 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7DCA92110D34A00464C93 /* DatabaseManager.swift */; };
+		5AFD7BDE2129E08B0047349C /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AFD7BDD2129E08B0047349C /* awsconfiguration.json */; };
+		7FFE33338E44167D01E1CAFC /* Pods_audioRec.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AC3E79F6067E566705EBB1 /* Pods_audioRec.framework */; };
+		BF00BC922137737200AE45B2 /* buttonsLogos.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF00BC912137737200AE45B2 /* buttonsLogos.xcassets */; };
+		BF078107212655FF00EB7CBE /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF078106212655FF00EB7CBE /* RecorderViewController.swift */; };
+		BF07810921268F6200EB7CBE /* gifFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF07810821268F6200EB7CBE /* gifFile.swift */; };
+		BF07810F2127674E00EB7CBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF07810E2127674E00EB7CBE /* Main.storyboard */; };
+		BF23663220FD19F50087C7E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23663120FD19F50087C7E1 /* AppDelegate.swift */; };
+		BF23663920FD19FA0087C7E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF23663820FD19FA0087C7E1 /* Assets.xcassets */; };
+		BF23663C20FD19FA0087C7E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF23663A20FD19FA0087C7E1 /* LaunchScreen.storyboard */; };
+		BF23664720FD19FB0087C7E1 /* audioRecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23664620FD19FB0087C7E1 /* audioRecTests.swift */; };
+		BF23665220FD19FB0087C7E1 /* audioRecUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23665120FD19FB0087C7E1 /* audioRecUITests.swift */; };
+		BF3CEEB2216B1016006B7524 /* TotemLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = BF3CEEB1216B1014006B7524 /* TotemLogo.png */; };
+		BF3CEEB5216D2A5B006B7524 /* recorderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3CEEB4216D2A5B006B7524 /* recorderModel.swift */; };
+		BF70CFDA21014F6F0001AF90 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70CFD921014F6F0001AF90 /* LoginViewController.swift */; };
+		BF70CFDE2102FA920001AF90 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF70CFDD2102FA920001AF90 /* CreateAccountViewController.swift */; };
+		BF77DE1D2127ADD300C7C038 /* loginButtonPurple.png in Resources */ = {isa = PBXBuildFile; fileRef = BF77DE1C2127ADD300C7C038 /* loginButtonPurple.png */; };
+		BF77DE1F212BE0CD00C7C038 /* TotemBanner.png in Resources */ = {isa = PBXBuildFile; fileRef = BF77DE1E212BE0CC00C7C038 /* TotemBanner.png */; };
+		BF77DE21212BE43900C7C038 /* CreateAccountBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = BF77DE20212BE43800C7C038 /* CreateAccountBtn.png */; };
+		BF8C12672113DABB0086A99E /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8C12662113DABB0086A99E /* PostTableViewCell.swift */; };
+		BFE02FFD210FF7EB00376B16 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE02FFC210FF7EB00376B16 /* ProfileViewController.swift */; };
+		BFE030012111128300376B16 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE030002111128300376B16 /* FeedViewController.swift */; };
+		BFE030032111183600376B16 /* CreateAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE030022111183600376B16 /* CreateAccountModel.swift */; };
+		F93C64E9F024065014BE42D4 /* Pods_audioRecUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B016A423D8DA75C830DDA5A3 /* Pods_audioRecUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BF23664320FD19FB0087C7E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF23662620FD19F50087C7E1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF23662D20FD19F50087C7E1;
+			remoteInfo = audioRec;
+		};
+		BF23664E20FD19FB0087C7E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BF23662620FD19F50087C7E1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF23662D20FD19F50087C7E1;
+			remoteInfo = audioRec;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2F8DD6F078F747D661FC52FE /* Pods-audioRec.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-audioRec.release.xcconfig"; path = "Pods/Target Support Files/Pods-audioRec/Pods-audioRec.release.xcconfig"; sourceTree = "<group>"; };
+		5A5A4077212A2F0E00302124 /* AWSAuthCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSAuthCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A5A4079212A2F0E00302124 /* AWSCognito.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSCognito.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A5A407B212A2F0E00302124 /* AWSCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A5A407D212A2F0E00302124 /* AWSMobileClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSMobileClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A5A407F212A2F0E00302124 /* AWSS3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AWSS3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A5A4081212A2FBE00302124 /* S3TransferUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S3TransferUtility.swift; sourceTree = "<group>"; };
+		5A5A4083212A331F00302124 /* recording.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = recording.gif; sourceTree = "<group>"; };
+		5AB7DCA6210FC76600464C93 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		5AB7DCA8210FC76600464C93 /* audioRec.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = audioRec.entitlements; sourceTree = "<group>"; };
+		5AB7DCA92110D34A00464C93 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		5AFD7BDD2129E08B0047349C /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		77AC3E79F6067E566705EBB1 /* Pods_audioRec.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_audioRec.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85654FF5389973D0651155B2 /* Pods-audioRec.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-audioRec.debug.xcconfig"; path = "Pods/Target Support Files/Pods-audioRec/Pods-audioRec.debug.xcconfig"; sourceTree = "<group>"; };
+		95FDA8D6D96088EEA89D066F /* Pods-audioRecTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-audioRecTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-audioRecTests/Pods-audioRecTests.release.xcconfig"; sourceTree = "<group>"; };
+		9E2DEF742C4F78E777F90C84 /* Pods-audioRecTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-audioRecTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-audioRecTests/Pods-audioRecTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A4ACEA7F5E64F8CCB7BB7928 /* Pods-audioRecUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-audioRecUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-audioRecUITests/Pods-audioRecUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A6D174BC186C4F4E7F504E4E /* Pods_audioRecTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_audioRecTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B016A423D8DA75C830DDA5A3 /* Pods_audioRecUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_audioRecUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF00BC912137737200AE45B2 /* buttonsLogos.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = buttonsLogos.xcassets; sourceTree = "<group>"; };
+		BF078106212655FF00EB7CBE /* RecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
+		BF07810821268F6200EB7CBE /* gifFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifFile.swift; sourceTree = "<group>"; };
+		BF07810E2127674E00EB7CBE /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BF23662E20FD19F50087C7E1 /* Totem1.2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Totem1.2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF23663120FD19F50087C7E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BF23663820FD19FA0087C7E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF23663B20FD19FA0087C7E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BF23663D20FD19FA0087C7E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF23664220FD19FB0087C7E1 /* Totem1.2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Totem1.2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF23664620FD19FB0087C7E1 /* audioRecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = audioRecTests.swift; sourceTree = "<group>"; };
+		BF23664820FD19FB0087C7E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF23664D20FD19FB0087C7E1 /* Totem1.2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Totem1.2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF23665120FD19FB0087C7E1 /* audioRecUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = audioRecUITests.swift; sourceTree = "<group>"; };
+		BF23665320FD19FB0087C7E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF3CEEB1216B1014006B7524 /* TotemLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TotemLogo.png; sourceTree = "<group>"; };
+		BF3CEEB4216D2A5B006B7524 /* recorderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recorderModel.swift; sourceTree = "<group>"; };
+		BF70CFD921014F6F0001AF90 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BF70CFDD2102FA920001AF90 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		BF77DE1C2127ADD300C7C038 /* loginButtonPurple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loginButtonPurple.png; path = ../../Totem/loginButtonPurple.png; sourceTree = "<group>"; };
+		BF77DE1E212BE0CC00C7C038 /* TotemBanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TotemBanner.png; path = ../../Totem/appImages/TotemBanner.png; sourceTree = "<group>"; };
+		BF77DE20212BE43800C7C038 /* CreateAccountBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CreateAccountBtn.png; path = ../../Totem/appImages/CreateAccountBtn.png; sourceTree = "<group>"; };
+		BF8C12662113DABB0086A99E /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		BFE02FFC210FF7EB00376B16 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BFE030002111128300376B16 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		BFE030022111183600376B16 /* CreateAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountModel.swift; sourceTree = "<group>"; };
+		F28DDA25B13541F35E306479 /* Pods-audioRecUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-audioRecUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-audioRecUITests/Pods-audioRecUITests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF23662B20FD19F50087C7E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A5A4078212A2F0E00302124 /* AWSAuthCore.framework in Frameworks */,
+				5A5A407A212A2F0E00302124 /* AWSCognito.framework in Frameworks */,
+				5A5A407C212A2F0E00302124 /* AWSCore.framework in Frameworks */,
+				5A5A407E212A2F0E00302124 /* AWSMobileClient.framework in Frameworks */,
+				5A5A4080212A2F0E00302124 /* AWSS3.framework in Frameworks */,
+				5AB7DCA7210FC76600464C93 /* ExternalAccessory.framework in Frameworks */,
+				7FFE33338E44167D01E1CAFC /* Pods_audioRec.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF23663F20FD19FB0087C7E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00E0DFC6504F600A28E955BA /* Pods_audioRecTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF23664A20FD19FB0087C7E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F93C64E9F024065014BE42D4 /* Pods_audioRecUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5790C88DE932B19422BF4E14 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				85654FF5389973D0651155B2 /* Pods-audioRec.debug.xcconfig */,
+				2F8DD6F078F747D661FC52FE /* Pods-audioRec.release.xcconfig */,
+				9E2DEF742C4F78E777F90C84 /* Pods-audioRecTests.debug.xcconfig */,
+				95FDA8D6D96088EEA89D066F /* Pods-audioRecTests.release.xcconfig */,
+				F28DDA25B13541F35E306479 /* Pods-audioRecUITests.debug.xcconfig */,
+				A4ACEA7F5E64F8CCB7BB7928 /* Pods-audioRecUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5AB7DCA5210FC76600464C93 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A5A4077212A2F0E00302124 /* AWSAuthCore.framework */,
+				5A5A4079212A2F0E00302124 /* AWSCognito.framework */,
+				5A5A407B212A2F0E00302124 /* AWSCore.framework */,
+				5A5A407D212A2F0E00302124 /* AWSMobileClient.framework */,
+				5A5A407F212A2F0E00302124 /* AWSS3.framework */,
+				5AB7DCA6210FC76600464C93 /* ExternalAccessory.framework */,
+				77AC3E79F6067E566705EBB1 /* Pods_audioRec.framework */,
+				A6D174BC186C4F4E7F504E4E /* Pods_audioRecTests.framework */,
+				B016A423D8DA75C830DDA5A3 /* Pods_audioRecUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF23662520FD19F50087C7E1 = {
+			isa = PBXGroup;
+			children = (
+				BF23663020FD19F50087C7E1 /* Totem1.2 */,
+				BF23664520FD19FB0087C7E1 /* audioRecTests */,
+				BF23665020FD19FB0087C7E1 /* audioRecUITests */,
+				BF23662F20FD19F50087C7E1 /* Products */,
+				5AB7DCA5210FC76600464C93 /* Frameworks */,
+				5790C88DE932B19422BF4E14 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		BF23662F20FD19F50087C7E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BF23662E20FD19F50087C7E1 /* Totem1.2.app */,
+				BF23664220FD19FB0087C7E1 /* Totem1.2Tests.xctest */,
+				BF23664D20FD19FB0087C7E1 /* Totem1.2UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BF23663020FD19F50087C7E1 /* Totem1.2 */ = {
+			isa = PBXGroup;
+			children = (
+				5A5A4083212A331F00302124 /* recording.gif */,
+				5AFD7BDD2129E08B0047349C /* awsconfiguration.json */,
+				5A5A4081212A2FBE00302124 /* S3TransferUtility.swift */,
+				5AB7DCA8210FC76600464C93 /* audioRec.entitlements */,
+				BF07810821268F6200EB7CBE /* gifFile.swift */,
+				BF23663120FD19F50087C7E1 /* AppDelegate.swift */,
+				BFEB5A0E2148D66A001B9068 /* tableCells */,
+				BFEB5A0921489BE3001B9068 /* Models */,
+				BFEB5A0021489A63001B9068 /* UIs */,
+				BF23663A20FD19FA0087C7E1 /* LaunchScreen.storyboard */,
+				BF23663820FD19FA0087C7E1 /* Assets.xcassets */,
+				BF00BC912137737200AE45B2 /* buttonsLogos.xcassets */,
+				BF77DE20212BE43800C7C038 /* CreateAccountBtn.png */,
+				BF77DE1C2127ADD300C7C038 /* loginButtonPurple.png */,
+				BF77DE1E212BE0CC00C7C038 /* TotemBanner.png */,
+				BF3CEEB1216B1014006B7524 /* TotemLogo.png */,
+				BF23663D20FD19FA0087C7E1 /* Info.plist */,
+				5AB7DCA92110D34A00464C93 /* DatabaseManager.swift */,
+			);
+			path = Totem1.2;
+			sourceTree = "<group>";
+		};
+		BF23664520FD19FB0087C7E1 /* audioRecTests */ = {
+			isa = PBXGroup;
+			children = (
+				BF23664620FD19FB0087C7E1 /* audioRecTests.swift */,
+				BF23664820FD19FB0087C7E1 /* Info.plist */,
+			);
+			path = audioRecTests;
+			sourceTree = "<group>";
+		};
+		BF23665020FD19FB0087C7E1 /* audioRecUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BF23665120FD19FB0087C7E1 /* audioRecUITests.swift */,
+				BF23665320FD19FB0087C7E1 /* Info.plist */,
+			);
+			path = audioRecUITests;
+			sourceTree = "<group>";
+		};
+		BFEB5A0021489A63001B9068 /* UIs */ = {
+			isa = PBXGroup;
+			children = (
+				BF70CFDD2102FA920001AF90 /* CreateAccountViewController.swift */,
+				BFE030002111128300376B16 /* FeedViewController.swift */,
+				BF70CFD921014F6F0001AF90 /* LoginViewController.swift */,
+				BF078106212655FF00EB7CBE /* RecorderViewController.swift */,
+				BFE02FFC210FF7EB00376B16 /* ProfileViewController.swift */,
+				BF07810E2127674E00EB7CBE /* Main.storyboard */,
+			);
+			path = UIs;
+			sourceTree = "<group>";
+		};
+		BFEB5A0921489BE3001B9068 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BFE030022111183600376B16 /* CreateAccountModel.swift */,
+				BF3CEEB4216D2A5B006B7524 /* recorderModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BFEB5A0E2148D66A001B9068 /* tableCells */ = {
+			isa = PBXGroup;
+			children = (
+				BF8C12662113DABB0086A99E /* PostTableViewCell.swift */,
+			);
+			path = tableCells;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BF23662D20FD19F50087C7E1 /* Totem1.2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF23665620FD19FB0087C7E1 /* Build configuration list for PBXNativeTarget "Totem1.2" */;
+			buildPhases = (
+				36109564B5B172A836A3E6C5 /* [CP] Check Pods Manifest.lock */,
+				BF23662A20FD19F50087C7E1 /* Sources */,
+				BF23662B20FD19F50087C7E1 /* Frameworks */,
+				BF23662C20FD19F50087C7E1 /* Resources */,
+				9484B792EA873B66216A887B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Totem1.2;
+			productName = audioRec;
+			productReference = BF23662E20FD19F50087C7E1 /* Totem1.2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BF23664120FD19FB0087C7E1 /* Totem1.2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF23665920FD19FB0087C7E1 /* Build configuration list for PBXNativeTarget "Totem1.2Tests" */;
+			buildPhases = (
+				4D4CEFD30C4340307595935F /* [CP] Check Pods Manifest.lock */,
+				BF23663E20FD19FB0087C7E1 /* Sources */,
+				BF23663F20FD19FB0087C7E1 /* Frameworks */,
+				BF23664020FD19FB0087C7E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF23664420FD19FB0087C7E1 /* PBXTargetDependency */,
+			);
+			name = Totem1.2Tests;
+			productName = audioRecTests;
+			productReference = BF23664220FD19FB0087C7E1 /* Totem1.2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BF23664C20FD19FB0087C7E1 /* Totem1.2UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BF23665C20FD19FB0087C7E1 /* Build configuration list for PBXNativeTarget "Totem1.2UITests" */;
+			buildPhases = (
+				7F19F2E3F4A7EBCCD6E16E64 /* [CP] Check Pods Manifest.lock */,
+				BF23664920FD19FB0087C7E1 /* Sources */,
+				BF23664A20FD19FB0087C7E1 /* Frameworks */,
+				BF23664B20FD19FB0087C7E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF23664F20FD19FB0087C7E1 /* PBXTargetDependency */,
+			);
+			name = Totem1.2UITests;
+			productName = audioRecUITests;
+			productReference = BF23664D20FD19FB0087C7E1 /* Totem1.2UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BF23662620FD19F50087C7E1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Michael Roundcount";
+				TargetAttributes = {
+					BF23662D20FD19F50087C7E1 = {
+						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.WAC = {
+								enabled = 1;
+							};
+						};
+					};
+					BF23664120FD19FB0087C7E1 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = BF23662D20FD19F50087C7E1;
+					};
+					BF23664C20FD19FB0087C7E1 = {
+						CreatedOnToolsVersion = 9.4.1;
+						TestTargetID = BF23662D20FD19F50087C7E1;
+					};
+				};
+			};
+			buildConfigurationList = BF23662920FD19F50087C7E1 /* Build configuration list for PBXProject "Totem1.2" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BF23662520FD19F50087C7E1;
+			productRefGroup = BF23662F20FD19F50087C7E1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BF23662D20FD19F50087C7E1 /* Totem1.2 */,
+				BF23664120FD19FB0087C7E1 /* Totem1.2Tests */,
+				BF23664C20FD19FB0087C7E1 /* Totem1.2UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BF23662C20FD19F50087C7E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF77DE1F212BE0CD00C7C038 /* TotemBanner.png in Resources */,
+				BF23663C20FD19FA0087C7E1 /* LaunchScreen.storyboard in Resources */,
+				5AFD7BDE2129E08B0047349C /* awsconfiguration.json in Resources */,
+				BF23663920FD19FA0087C7E1 /* Assets.xcassets in Resources */,
+				BF3CEEB2216B1016006B7524 /* TotemLogo.png in Resources */,
+				BF00BC922137737200AE45B2 /* buttonsLogos.xcassets in Resources */,
+				BF77DE21212BE43900C7C038 /* CreateAccountBtn.png in Resources */,
+				5A5A4084212A331F00302124 /* recording.gif in Resources */,
+				BF07810F2127674E00EB7CBE /* Main.storyboard in Resources */,
+				BF77DE1D2127ADD300C7C038 /* loginButtonPurple.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF23664020FD19FB0087C7E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF23664B20FD19FB0087C7E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		36109564B5B172A836A3E6C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-audioRec-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4D4CEFD30C4340307595935F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-audioRecTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F19F2E3F4A7EBCCD6E16E64 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-audioRecUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9484B792EA873B66216A887B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-audioRec/Pods-audioRec-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AWSAuthCore/AWSAuthCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSMobileClient/AWSMobileClient.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSAuthCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognito.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSMobileClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-audioRec/Pods-audioRec-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BF23662A20FD19F50087C7E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFE02FFD210FF7EB00376B16 /* ProfileViewController.swift in Sources */,
+				BF3CEEB5216D2A5B006B7524 /* recorderModel.swift in Sources */,
+				BF70CFDE2102FA920001AF90 /* CreateAccountViewController.swift in Sources */,
+				5AB7DCAA2110D34A00464C93 /* DatabaseManager.swift in Sources */,
+				BF70CFDA21014F6F0001AF90 /* LoginViewController.swift in Sources */,
+				BF07810921268F6200EB7CBE /* gifFile.swift in Sources */,
+				BF078107212655FF00EB7CBE /* RecorderViewController.swift in Sources */,
+				BFE030032111183600376B16 /* CreateAccountModel.swift in Sources */,
+				BF8C12672113DABB0086A99E /* PostTableViewCell.swift in Sources */,
+				BF23663220FD19F50087C7E1 /* AppDelegate.swift in Sources */,
+				5A5A4082212A2FBE00302124 /* S3TransferUtility.swift in Sources */,
+				BFE030012111128300376B16 /* FeedViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF23663E20FD19FB0087C7E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF23664720FD19FB0087C7E1 /* audioRecTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BF23664920FD19FB0087C7E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF23665220FD19FB0087C7E1 /* audioRecUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BF23664420FD19FB0087C7E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF23662D20FD19F50087C7E1 /* Totem1.2 */;
+			targetProxy = BF23664320FD19FB0087C7E1 /* PBXContainerItemProxy */;
+		};
+		BF23664F20FD19FB0087C7E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BF23662D20FD19F50087C7E1 /* Totem1.2 */;
+			targetProxy = BF23664E20FD19FB0087C7E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BF23663A20FD19FA0087C7E1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF23663B20FD19FA0087C7E1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BF23665420FD19FB0087C7E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BF23665520FD19FB0087C7E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BF23665720FD19FB0087C7E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85654FF5389973D0651155B2 /* Pods-audioRec.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = audioRec/audioRec.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = Totem1.2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Totem-LLC.Totem1.2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BF23665820FD19FB0087C7E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F8DD6F078F747D661FC52FE /* Pods-audioRec.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = audioRec/audioRec.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = Totem1.2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "Totem-LLC.Totem1.2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BF23665A20FD19FB0087C7E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E2DEF742C4F78E777F90C84 /* Pods-audioRecTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = audioRecTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Totem-LLC.audioRecTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Totem1.2.temp_caseinsensitive_rename.app/Totem1.2.temp_caseinsensitive_rename";
+			};
+			name = Debug;
+		};
+		BF23665B20FD19FB0087C7E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95FDA8D6D96088EEA89D066F /* Pods-audioRecTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = audioRecTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Totem-LLC.audioRecTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Totem1.2.temp_caseinsensitive_rename.app/Totem1.2.temp_caseinsensitive_rename";
+			};
+			name = Release;
+		};
+		BF23665D20FD19FB0087C7E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F28DDA25B13541F35E306479 /* Pods-audioRecUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = audioRecUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Totem-LLC.audioRecUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = audioRec;
+			};
+			name = Debug;
+		};
+		BF23665E20FD19FB0087C7E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4ACEA7F5E64F8CCB7BB7928 /* Pods-audioRecUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = audioRecUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Totem-LLC.audioRecUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = audioRec;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BF23662920FD19F50087C7E1 /* Build configuration list for PBXProject "Totem1.2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF23665420FD19FB0087C7E1 /* Debug */,
+				BF23665520FD19FB0087C7E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF23665620FD19FB0087C7E1 /* Build configuration list for PBXNativeTarget "Totem1.2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF23665720FD19FB0087C7E1 /* Debug */,
+				BF23665820FD19FB0087C7E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF23665920FD19FB0087C7E1 /* Build configuration list for PBXNativeTarget "Totem1.2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF23665A20FD19FB0087C7E1 /* Debug */,
+				BF23665B20FD19FB0087C7E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BF23665C20FD19FB0087C7E1 /* Build configuration list for PBXNativeTarget "Totem1.2UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF23665D20FD19FB0087C7E1 /* Debug */,
+				BF23665E20FD19FB0087C7E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BF23662620FD19F50087C7E1 /* Project object */;
+}
