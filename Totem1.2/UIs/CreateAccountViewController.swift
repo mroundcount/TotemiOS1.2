@@ -52,4 +52,8 @@ class CreateAccountViewController: UIViewController {
             self.token = preferences.value(forKey: "tokenKey") as! String
         }
     }
+    
+    override open var shouldAutorotate: Bool {
+        return false
+    }
 }

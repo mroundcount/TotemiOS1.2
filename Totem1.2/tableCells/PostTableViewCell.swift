@@ -13,12 +13,12 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var postDescription: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var datePostedLabel: UILabel!
+    
+    var postID: Int?
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
-    var postID: Int?
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

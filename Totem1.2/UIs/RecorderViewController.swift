@@ -17,8 +17,7 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var feedBtn: UIBarButtonItem!
     @IBOutlet weak var recordNavBtn: UIBarButtonItem!
     @IBOutlet weak var profileBtn: UIBarButtonItem!
-    
-    
+
     @IBAction func feedBtn(_ sender: Any) {
         self.performSegue(withIdentifier: "recorderToFeed", sender: nil)
     }
@@ -28,23 +27,76 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBOutlet weak var recordingImage: UIImageView!
     
-
     @IBOutlet weak var recordBtn: UIButton!
     @IBOutlet weak var finishedBtn: UIButton!
     @IBOutlet weak var pauseBtn: UIButton!
     @IBOutlet weak var publishBtn: UIButton!
+    
     @IBOutlet weak var descriptionTxt: UITextField!
 
-    
- 
-    
     @IBOutlet weak var timerLbl: UILabel!
     @IBOutlet weak var defaultTxt: UILabel!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        buttonsOnLoad ()
+    }
+    
+    override open var shouldAutorotate: Bool {
+        return false
+    }
+
+    @IBAction func recordBtn(_ sender: UIButton) {
+        if audioRecorder == nil{
+            let filename = getDirectory().appendingPathComponent("myrecorder.m4a")
+            let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000, AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
+            //Start Audio Recodring
+            do {
+                //pass in the URL and the settings defined above
+                audioRecorder = try AVAudioRecorder(url: filename, settings: settings)
+                beginRecording ()
+            }
+            catch {
+                displayALert(title: "Oh my.....", message: "Recording Failed")
+            }
+        }
+    }
+    
+    @IBAction func pauseBtn(_ sender: UIButton) {
+    if (finishedBtn.titleLabel?.text == "Finished") {
+            if (pauseBtn.titleLabel?.text == "Pause") {
+                pauseRecorder ()
+            } else {
+                resumeRecorder ()
+            }
+        } else {
+            if (pauseBtn.titleLabel?.text == "Pause") {
+                audioPlayer.pause()
+                pauseBtn.setTitle("Resume", for: .normal)
+            } else {
+                pauseBtn.setTitle("Pause", for: .normal)
+                audioPlayer.play()
+                
+            }
+        }
+    }
+    
+    @IBAction func finishedBtn(_ sender: UIButton) {
+        finishedAction ()
+    }
+    
+    @IBAction func publishBtn(_ sender: UIButton) {
+        print("playing back")
+        let s3Transfer = S3TransferUtility()
+    }
+
+    
+    
+    
+    //Functions
+    
+    func buttonsOnLoad () {
         descriptionTxt.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         
         publishBtn.isHidden = true
@@ -52,7 +104,7 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
         finishedBtn.isHidden = true
         descriptionTxt.isHidden = true
         publishBtn.isHidden = true
-
+        
         defaultTxt.text = "Click anywhere and start talking"
         
         //Setting up session
@@ -68,110 +120,57 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
-    
-    func textViewDidChange(textView: UITextView) { //Handle the text changes here
-        print(textView.text); //the textView parameter is the textView where text was changed
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
-    
-    @objc func editingChanged(_ textField: UITextField) {
-        if recorderRule.validation(description: descriptionTxt.text) == true {
-            defaultTxt.text = " Hey pal shorten the text a bit, that space costs money you know.... "
-        } else {
-            defaultTxt.text = " "
-        }
-    }
-    
-    
-    
-    
-    @IBAction func recordBtn(_ sender: UIButton) {
-
-        if audioRecorder == nil{
-            
-            let filename = getDirectory().appendingPathComponent("myrecorder.m4a")
-
-            let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000, AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
-
-            //Start Audio Recodring
-            do {
-                //pass in the URL and the settings defined above
-                audioRecorder = try AVAudioRecorder(url: filename, settings: settings)
-                audioRecorder.delegate = self
-                audioRecorder.record()
-                
-                publishBtn.isHidden = true
-                pauseBtn.isHidden = false
-                finishedBtn.isHidden = false
-                recordBtn.isHidden = true
-                defaultTxt.isHidden = true
-                publishBtn.isHidden = true
-                
-                //rerecord settings
-                pauseBtn.setTitle("Pause", for: .normal)
-                finishedBtn.setTitle("Finished", for: .normal)
-                recordingImage.isHidden = false
-                
-                recordingImage.loadGif(name: "recording")
-                
-                start()
-
-            }
-            catch {
-                displayALert(title: "Oh my.....", message: "Recording Failed")
-            }
-        }
+    func beginRecording () {
+        //pass in the URL and the settings defined above
+        audioRecorder.delegate = self
+        audioRecorder.record()
+        
+        publishBtn.isHidden = true
+        pauseBtn.isHidden = false
+        finishedBtn.isHidden = false
+        recordBtn.isHidden = true
+        defaultTxt.isHidden = true
+        publishBtn.isHidden = true
+        
+        //rerecord settings
+        pauseBtn.setTitle("Pause", for: .normal)
+        finishedBtn.setTitle("Finished", for: .normal)
+        recordingImage.isHidden = false
+        
+        recordingImage.loadGif(name: "recording")
+        
+        descriptionTxt.isHidden = true
+        
+        reset()
+        start()
     }
     
-    
-
-    @IBAction func pauseBtn(_ sender: UIButton) {
-    if (finishedBtn.titleLabel?.text == "Finished") {
-            if (pauseBtn.titleLabel?.text == "Pause") {
-                //When recording is paused
-                recordingImage.isHidden = true
-                
-                let blueColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 255/255.0, alpha: 1.0)
-                view.backgroundColor = blueColor
-                
-                audioRecorder.pause()
-                
-                pauseBtn.setTitle("Resume", for: .normal)
-            } else {
-                //When recording is active
-                pauseBtn.setTitle("Pause", for: .normal)
-                recordingImage.loadGif(name: "recording")
-                recordingImage.isHidden = false
-                
-                audioRecorder.record()
-            }
-        } else {
-            if (pauseBtn.titleLabel?.text == "Pause") {
-                audioPlayer.pause()
-                pauseBtn.setTitle("Resume", for: .normal)
-            } else {
-                pauseBtn.setTitle("Pause", for: .normal)
-                audioPlayer.play()
-                
-            }
-        }
+    func pauseRecorder () {
+        //When recording is paused
+        recordingImage.isHidden = true
+        let blueColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 255/255.0, alpha: 1.0)
+        view.backgroundColor = blueColor
+        audioRecorder.pause()
+        stop()
+        pauseBtn.setTitle("Resume", for: .normal)
     }
     
-    
-
-    @IBAction func finishedBtn(_ sender: UIButton) {
-        finishedAction ()
+    func resumeRecorder () {
+        //When recording is active
+        pauseBtn.setTitle("Pause", for: .normal)
+        recordingImage.loadGif(name: "recording")
+        recordingImage.isHidden = false
+        start()
+        audioRecorder.record()
     }
     
     func finishedAction () {
-    if (finishedBtn.titleLabel?.text == "Finished") {
+        if (finishedBtn.titleLabel?.text == "Finished") {
             //When clicked
             pauseBtn.setTitle("Pause", for: .normal)
-        
+            
+            stop()
+            
             publishBtn.isHidden = false
             recordingImage.isHidden = true
             descriptionTxt.isHidden = false
@@ -188,11 +187,11 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
             //stop the audio recording
             audioRecorder.stop()
             audioRecorder = nil
-        
+            
             pauseBtn.isHidden = true
-        
+            
             finishedBtn.setTitle("Playback", for: .normal)
-        
+            
             // This is just a test to upload to s3
             let dataURL = getDirectory().appendingPathComponent("myrecorder.m4a")
             let s3Transfer = S3TransferUtility()
@@ -204,26 +203,27 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
             }
         }
         if (finishedBtn.titleLabel?.text == "Playback") {
-            pauseBtn.isHidden = false
-            let filename = getDirectory().appendingPathComponent("myrecorder.m4a")
-            do{
-                //initialize the audio player
-                audioPlayer = try AVAudioPlayer(contentsOf: filename)
-                audioPlayer.play()
-            }
-            catch{
-                displayALert(title: "Oh no.....", message: "Playback Failed")
-            }
+
+            playBack ()
         }
-            
     }
     
-    @IBAction func publishBtn(_ sender: UIButton) {
-        
-        print("playing back")
-        let s3Transfer = S3TransferUtility()
+    func playBack () {
+        pauseBtn.isHidden = false
+        let filename = getDirectory().appendingPathComponent("myrecorder.m4a")
+        do{
+            //initialize the audio player
+            audioPlayer = try AVAudioPlayer(contentsOf: filename)
+            audioPlayer.play()
+        }
+        catch{
+            displayALert(title: "Oh no.....", message: "Playback Failed")
+        }
     }
-
+    
+    
+    
+    
     //Recording functions
     var recordingSession:AVAudioSession!
     var audioRecorder:AVAudioRecorder!
@@ -245,11 +245,26 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
         alert.addAction(UIAlertAction(title: "dismiss", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-    
-    
-    
 
+    //Publishing
+    func textViewDidChange(textView: UITextView) { //Handle the text changes here
+        print(textView.text); //the textView parameter is the textView where text was changed
+    }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    @objc func editingChanged(_ textField: UITextField) {
+        if recorderRule.validation(description: descriptionTxt.text) == true {
+            defaultTxt.text = " Hey pal shorten the text a bit, that space costs money you know.... "
+            descriptionTxt.isEnabled = false
+        } else {
+            defaultTxt.text = " "
+            descriptionTxt.isEnabled = true
+        }
+    }
     
     
     //Timers
@@ -276,6 +291,11 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
         status = false
     }
     
+    func reset() {
+        time = 0
+        elapsed = 0
+    }
+    
     @objc func updateCounter() {
         // Calculate total time since timer started in seconds
         time = Date().timeIntervalSinceReferenceDate - startTime
@@ -296,22 +316,15 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
         let strSeconds = String(format: "%02d", seconds)
         let strMilliseconds = String(format: "%02d", milliseconds)
         
-        timerLbl.text = "\(strMinutes):\(strSeconds):\(strMilliseconds)"
+        timerLbl.text = "\(strMinutes):\(strSeconds)"
         
         func eventTimer() {
-            if seconds == 4 {
+            if minutes == 1 {
                 finishedAction ()
                 stop()
             }
         }
         //why must you have this?
         return(eventTimer())
-        
-        // Add time vars to relevant labels
-        /*
-        labelMinute.text = strMinutes
-        labelSecond.text = strSeconds
-        labelMillisecond.text = strMilliseconds
-         */
     }
 }

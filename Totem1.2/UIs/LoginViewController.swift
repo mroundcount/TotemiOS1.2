@@ -41,6 +41,10 @@ class LoginViewController: UIViewController {
         logoBanner.layer.shadowOffset = CGSize(width: 3, height: 3)
         logoBanner.layer.shadowOpacity = 0.8
     }
+    
+    override open var shouldAutorotate: Bool {
+        return false
+    }
 
     @IBAction func createAccountBtn(_ sender: UIButton) {
         self.performSegue(withIdentifier: "createAccount", sender: nil) }

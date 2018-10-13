@@ -5,7 +5,6 @@
 //  Created by Lucas Rydberg on 7/31/18.
 //  Copyright © 2018 Michael Roundcount. All rights reserved.
 //
-
 import Foundation
 import SystemConfiguration
 
@@ -78,15 +77,15 @@ class DatabaseManager {
                         
                     } else {
                         
-                            do{
-                                // convert String to NSData
-                                let data: NSData = responseString!.data(using: String.Encoding.utf8)! as NSData
-                                let parsedData = try JSONSerialization.jsonObject(with: data as Data) as! [String:AnyObject]
-                                print("[][][][][][][][][ parsed data ][][][][][")
-                                print(parsedData)
-                            } catch{
-                                print("Could not make object")
-                            }
+                        do{
+                            // convert String to NSData
+                            let data: NSData = responseString!.data(using: String.Encoding.utf8)! as NSData
+                            let parsedData = try JSONSerialization.jsonObject(with: data as Data) as! [String:AnyObject]
+                            print("[][][][][][][][][ parsed data ][][][][][")
+                            print(parsedData)
+                        } catch{
+                            print("Could not make object")
+                        }
                         
                         
                         // avoid deadlocks by not using .main queue here
@@ -191,6 +190,83 @@ class DatabaseManager {
         }
     }
     
+    // Requires valid JSON Web token
+    //
+    // Returns Posts as NSArray
+    func createNewPost(token: String, data: String) -> Int {
+        
+        var responseCode : Int = 0
+        if(isInternetAvailable()){
+            
+            print("GETTING POSTS")
+            // get patient
+            let webUrl1 = "http://totem-env.qqkpcqqjfi.us-east-1.elasticbeanstalk.com/api/post"
+            var request1 = URLRequest(url: URL(string: webUrl1)!)
+            
+            // Set method to GET and add token
+            request1.httpMethod = "POST"
+            request1.setValue("data", forHTTPHeaderField: "Content")
+            request1.setValue("Bearer " + token, forHTTPHeaderField: "Authorization")
+            
+            let json: NSData = data.data(using: String.Encoding.utf8)! as NSData
+            
+            request1.httpBody = json as Data
+            
+            // use DispatchGroup so you don't return token before it has a value
+            let group = DispatchGroup()
+            
+            group.enter()
+            
+            // fireoff request
+            let task1 = URLSession.shared.dataTask(with: request1) { data, response, error in
+                guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                    print("error=\(String(describing: error))")
+                    self.posts = []
+                    group.leave()
+                    return
+                }
+                
+                let httpStatus = response as? HTTPURLResponse
+                
+                print("HTTPS STATUS (I)#(*%)($*%)(#*)$(%*")
+                print(httpStatus)
+                
+                if httpStatus?.statusCode != 200 {           // check for http errors
+                    print("statusCode should be 200, but is \(String(describing: httpStatus?.statusCode))")
+                    
+                    // avoid deadlocks by not using .main queue here
+                    DispatchQueue.global().async {
+                        group.leave()
+                    }
+                    
+                } else {
+                    
+                    // avoid deadlocks by not using .main queue here
+                    DispatchQueue.global().async {
+                        do{
+                            responseCode = (httpStatus?.statusCode)!
+                        } catch{
+                            print("Could not make obj")
+                        }
+                        group.leave()
+                    }
+                    
+                }
+                
+                
+            }
+            task1.resume()
+            
+            // wait ...
+            group.wait()
+            // ... and return as soon as "posts" has a value
+            return responseCode
+        }
+        else {
+            return 0
+        }
+    }
+    
     func isInternetAvailable() -> Bool
     {
         var zeroAddress = sockaddr_in()
@@ -263,71 +339,10 @@ class DatabaseManager {
                         }
                         group.leave()
                     }
-                }
-            }
-            task1.resume()
-            
-            // wait ...
-            group.wait()
-            // ... and return as soon as "posts" has a value
-            return self.posts!
-        }
-        else {
-            return []
-        }
-    }
-    
-    func getUsernames(token: String, data: String) -> NSArray {
-        
-        if(isInternetAvailable()){
-            
-            print("GETTING USERS")
-            // get patient
-            let webUrl1 = "http://totem-env.qqkpcqqjfi.us-east-1.elasticbeanstalk.com/api/allPosts"
-            var request1 = URLRequest(url: URL(string: webUrl1)!)
-            
-            // Set method to GET and add token
-            request1.httpMethod = "GET"
-            request1.setValue("Bearer " + token, forHTTPHeaderField: "Authorization")
-            
-            
-            // use DispatchGroup so you don't return token before it has a value
-            let group = DispatchGroup()
-            
-            group.enter()
-            
-            // fireoff request
-            let task1 = URLSession.shared.dataTask(with: request1) { data, response, error in
-                guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                    print("error=\(String(describing: error))")
-                    self.posts = []
-                    group.leave()
-                    return
+                    
                 }
                 
-                let httpStatus = response as? HTTPURLResponse
                 
-                if httpStatus?.statusCode != 200 {           // check for http errors
-                    print("statusCode should be 200, but is \(String(describing: httpStatus?.statusCode))")
-                    
-                    // avoid deadlocks by not using .main queue here
-                    DispatchQueue.global().async {
-                        group.leave()
-                    }
-                    
-                } else {
-                    
-                    // avoid deadlocks by not using .main queue here
-                    DispatchQueue.global().async {
-                        do{
-                            self.posts = try JSONSerialization.jsonObject(with: data as Data) as? NSArray
-                            
-                        } catch{
-                            print("Could not make obj")
-                        }
-                        group.leave()
-                    }
-                }
             }
             task1.resume()
             

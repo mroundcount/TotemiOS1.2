@@ -5,7 +5,6 @@
 //  Created by Lucas Rydberg on 8/19/18.
 //  Copyright © 2018 Michael Roundcount. All rights reserved.
 //
-
 import Foundation
 import AWSCore
 import AWSS3
@@ -40,7 +39,7 @@ class S3TransferUtility {
         let transferUtility = AWSS3TransferUtility.default()
         
         transferUtility.uploadData(data,
-                                   bucket: "s3Folder",
+                                   bucket: "roundcountaudiotest",
                                    key: "testing.m4a",
                                    contentType: "m4a",
                                    expression: expression,
@@ -73,6 +72,7 @@ class S3TransferUtility {
                 print("completed download of file")
                 print("error \(error)")
                 
+                
                 do{
                     //initialize the audio player
                     self.audioPlayer = try AVAudioPlayer(data: data!)
@@ -88,11 +88,11 @@ class S3TransferUtility {
         let transferUtility = AWSS3TransferUtility.default()
         transferUtility.downloadData(
             fromBucket: "roundcountaudiotest",
-            key: "s3Folder/\(postID).m4a",
+            key: "\(postID).m4a",
             expression: expression,
             completionHandler: completionHandler
             ).continueWith {
-                (task) -> AnyObject! in if let error = task.error {
+                (task) -> AnyObject? in if let error = task.error {
                     print("Error: \(error.localizedDescription)")
                 }
                 

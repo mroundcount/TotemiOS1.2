@@ -40,11 +40,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
+ 
         var cell : PostTableViewCell!
-        
-        
+
         if((posts?.count)! > 0){
             
             let post = posts?[indexPath.row] as? [String: Any]
@@ -95,7 +93,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell
         
         let postID = cell?.postID!
@@ -105,16 +102,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func downloadAudioFromS3(postID: Int) {
-        
         let s3Transfer = S3TransferUtility()
         s3Transfer.downloadData(postID: postID)
-        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        feedBtn.isEnabled = false
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -153,6 +149,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override open var shouldAutorotate: Bool {
+        return false
     }
     
 }
