@@ -48,15 +48,17 @@ class LoginViewController: UIViewController {
     @IBAction func loginPressed(_ sender: Any) {
         let username = _username.text!
         let password = _password.text!
+        print("login button pressed")
         
-        //loginClass.DoLogin(user:username, psw:password)
-        //DoLogin(user: username, psw: password)
+//        loginClass.DoLogin(user:username, psw:password)
+        DoLogin(user: username, psw: password)
     }
     
     func DoLogin(user:String, psw:String){        
         //test API link
         let url = URL(string: "http://totem-env.qqkpcqqjfi.us-east-1.elasticbeanstalk.com/apiToken")
         //let session = URLSession.shared
+        var success = false
         
         let request = NSMutableURLRequest(url: url!)
         request.httpMethod = "POST"
@@ -98,6 +100,7 @@ class LoginViewController: UIViewController {
                 // success case
                 let statCode = httpStatus.statusCode
                 
+                success = true
                 print(statCode)
                 
                 let responseString = String(data: data, encoding: .utf8)
@@ -129,13 +132,15 @@ class LoginViewController: UIViewController {
             group.notify(queue: .main){
             print("complete")
             
-            if(!self.token.starts(with: "ey"))  {
+            if(success)  {
                 
                 // login worked, perform segue
                 print("Performing the segue")
                 self.performSegue(withIdentifier: "loginSuccessful", sender: nil)
                 
-            }
+            } else {
+                print("login not successful")
+                }
         }
     }
 }

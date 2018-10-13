@@ -15,8 +15,7 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
     private let recorderRule = recorderCharLimit()
     
     @IBOutlet weak var feedBtn: UIBarButtonItem!
-
-    @IBOutlet weak var recorderNavBtn: UIBarButtonItem!
+    @IBOutlet weak var recordNavBtn: UIBarButtonItem!
     @IBOutlet weak var profileBtn: UIBarButtonItem!
     
     
@@ -35,7 +34,11 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var pauseBtn: UIButton!
     @IBOutlet weak var publishBtn: UIButton!
     @IBOutlet weak var descriptionTxt: UITextField!
+
     
+ 
+    
+    @IBOutlet weak var timerLbl: UILabel!
     @IBOutlet weak var defaultTxt: UILabel!
 
     
@@ -55,6 +58,8 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
         //Setting up session
         recordingSession = AVAudioSession.sharedInstance()
         
+        recordNavBtn.isEnabled = false
+        
         //asking the user for permission
         AVAudioSession.sharedInstance().requestRecordPermission { (hasPermission) in
             if hasPermission {
@@ -63,17 +68,26 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
+    
+    func textViewDidChange(textView: UITextView) { //Handle the text changes here
+        print(textView.text); //the textView parameter is the textView where text was changed
+    }
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
     
-    func charLength(descriptionTxt:String) {
-        if (descriptionTxt.count) <= 3 {
-            defaultTxt.text = "Hey pal shorten the text a bit, that space costs money you know "
+    @objc func editingChanged(_ textField: UITextField) {
+        if recorderRule.validation(description: descriptionTxt.text) == true {
+            defaultTxt.text = " Hey pal shorten the text a bit, that space costs money you know.... "
+        } else {
+            defaultTxt.text = " "
         }
     }
-
+    
+    
+    
     
     @IBAction func recordBtn(_ sender: UIButton) {
 
@@ -191,6 +205,15 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
         }
         if (finishedBtn.titleLabel?.text == "Playback") {
             pauseBtn.isHidden = false
+            let filename = getDirectory().appendingPathComponent("myrecorder.m4a")
+            do{
+                //initialize the audio player
+                audioPlayer = try AVAudioPlayer(contentsOf: filename)
+                audioPlayer.play()
+            }
+            catch{
+                displayALert(title: "Oh no.....", message: "Playback Failed")
+            }
         }
             
     }
@@ -199,7 +222,6 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
         
         print("playing back")
         let s3Transfer = S3TransferUtility()
-        s3Transfer.downloadData()
     }
 
     //Recording functions
@@ -226,13 +248,7 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
     
     
     
-    @objc func editingChanged(_ textField: UITextField) {
-        if recorderRule.validation(description: descriptionTxt.text) == true {
-            defaultTxt.text = " Hey pal shorten the text a bit, that space costs money you know "
-        } else {
-            defaultTxt.text = " "
-        }
-    }
+
     
     
     
@@ -280,7 +296,7 @@ class RecorderViewController: UIViewController, AVAudioRecorderDelegate {
         let strSeconds = String(format: "%02d", seconds)
         let strMilliseconds = String(format: "%02d", milliseconds)
         
-        print("\(strMinutes):\(strSeconds):\(strMilliseconds)")
+        timerLbl.text = "\(strMinutes):\(strSeconds):\(strMilliseconds)"
         
         func eventTimer() {
             if seconds == 4 {

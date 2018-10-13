@@ -40,12 +40,12 @@ class S3TransferUtility {
         let transferUtility = AWSS3TransferUtility.default()
         
         transferUtility.uploadData(data,
-                                   bucket: "roundcountaudiotest",
+                                   bucket: "s3Folder",
                                    key: "testing.m4a",
                                    contentType: "m4a",
                                    expression: expression,
                                    completionHandler: completionHandler).continueWith {
-                                    (task) -> AnyObject! in
+                                    (task) -> AnyObject? in
                                     if let error = task.error {
                                         print("Error: \(error.localizedDescription)")
                                     }
@@ -57,7 +57,7 @@ class S3TransferUtility {
         }
     }
     
-    func downloadData() {
+    func downloadData(postID: Int) {
         let expression = AWSS3TransferUtilityDownloadExpression()
         expression.progressBlock = {(task, progress) in DispatchQueue.main.async(execute: {
             // Do something e.g. Update a progress bar.
@@ -71,6 +71,7 @@ class S3TransferUtility {
                 // On failed downloads, `error` contains the error object.
                 
                 print("completed download of file")
+                print("error \(error)")
                 
                 do{
                     //initialize the audio player
@@ -80,14 +81,14 @@ class S3TransferUtility {
                 catch{
                     print("bummer")
                 }
-
+                
             })
         }
         
         let transferUtility = AWSS3TransferUtility.default()
         transferUtility.downloadData(
             fromBucket: "roundcountaudiotest",
-            key: "testing.m4a",
+            key: "s3Folder/\(postID).m4a",
             expression: expression,
             completionHandler: completionHandler
             ).continueWith {

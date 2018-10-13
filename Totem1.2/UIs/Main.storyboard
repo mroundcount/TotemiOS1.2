@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gu6-eg-1mg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gsk-Cu-sAB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -244,6 +244,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EOH-6v-56F">
+                                <rect key="frame" x="118" y="223" width="126" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.19125583560000001" green="0.54957648140000004" blue="0.94226860700000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -270,7 +277,9 @@
                         <outlet property="profileBtn" destination="2Pi-rU-6aA" id="Uwf-bx-BGT"/>
                         <outlet property="publishBtn" destination="Ynj-9m-Iye" id="4CG-MP-1dZ"/>
                         <outlet property="recordBtn" destination="M4x-Ti-V3q" id="fQN-3n-EOh"/>
+                        <outlet property="recordNavBtn" destination="FcT-7n-qUC" id="z7y-33-W3X"/>
                         <outlet property="recordingImage" destination="1Fq-9P-Ufv" id="R5D-HD-neT"/>
+                        <outlet property="timerLbl" destination="EOH-6v-56F" id="CfA-qa-Qmu"/>
                         <segue destination="Gsk-Cu-sAB" kind="show" identifier="recorderToFeed" id="328-d9-JvX"/>
                         <segue destination="u83-tG-Pf8" kind="show" identifier="recorderToProfile" id="jkg-6V-pYk"/>
                     </connections>
@@ -514,8 +523,8 @@
         <image name="loginButtonPurple.png" width="286" height="89"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jkg-6V-pYk"/>
+        <segue reference="SRk-YV-Ssw"/>
         <segue reference="328-d9-JvX"/>
-        <segue reference="H1b-8h-5Xu"/>
+        <segue reference="Ka7-po-dtK"/>
     </inferredMetricsTieBreakers>
 </document>

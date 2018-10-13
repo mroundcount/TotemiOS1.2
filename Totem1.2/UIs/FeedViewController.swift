@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AWSS3
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -25,7 +26,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.performSegue(withIdentifier: "feedToProfile", sender: nil)
     }
     
+
+    
     let preferences = UserDefaults.standard
+    
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -37,13 +41,19 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
         var cell : PostTableViewCell!
-
+        
+        
         if((posts?.count)! > 0){
             
             let post = posts?[indexPath.row] as? [String: Any]
             
             let description = post!["description"] as? String
+            
+            let postID = post!["post_i_d"] as? Int
+            
+            print(postID)
             
             let username = post!["username"] as? String
             
@@ -60,6 +70,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.postDescription.text = description!
             cell.usernameLabel.text = "By: \(username!)"
             cell.datePostedLabel.text = finalDate
+            cell.postID = postID!
+            
         }
         
         cell.sizeToFit()
@@ -82,25 +94,27 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath) as? PostTableViewCell
+        
+        let postID = cell?.postID!
+        downloadAudioFromS3(postID: postID!)
+
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
-        //copy this and add the variables in the return with "delete
-        let delete = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
-            print("delete button tapped")
-        }
-        delete.backgroundColor = .red
+    
+    func downloadAudioFromS3(postID: Int) {
         
-        return [delete]
+        let s3Transfer = S3TransferUtility()
+        s3Transfer.downloadData(postID: postID)
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        feedBtn.isEnabled = false
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -126,6 +140,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         print(dataString)
         
         print("----------------------------")
+        
+        
+        //big
         
         self.posts = dbManager.getPostsForFeed(token: self.token, data: dataString) as NSArray
         
