@@ -215,7 +215,6 @@
 				BF77DE1E212BE0CC00C7C038 /* TotemBanner.png */,
 				BF3CEEB1216B1014006B7524 /* TotemLogo.png */,
 				BF23663D20FD19FA0087C7E1 /* Info.plist */,
-				5AB7DCA92110D34A00464C93 /* DatabaseManager.swift */,
 			);
 			path = Totem1.2;
 			sourceTree = "<group>";
@@ -257,6 +256,7 @@
 				BFE030022111183600376B16 /* CreateAccountModel.swift */,
 				BF3CEEB4216D2A5B006B7524 /* recorderModel.swift */,
 				BFAF27DF2171B548006D7E34 /* timerModel.swift */,
+				5AB7DCA92110D34A00464C93 /* DatabaseManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

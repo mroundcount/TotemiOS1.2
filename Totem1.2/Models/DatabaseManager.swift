@@ -27,6 +27,9 @@ class DatabaseManager {
     //
     //
     // Returns response code as Int
+    
+    
+    //added token: String,     failed
     func dataPost(endpoint: String, data: String) -> Int {
         
         if(isInternetAvailable()){
@@ -40,6 +43,8 @@ class DatabaseManager {
             // Set method to GET and add token
             request1.httpMethod = "POST"
             request1.setValue("data", forHTTPHeaderField: "Content")
+            //added failed
+            request1.setValue("Bearer " + endpoint, forHTTPHeaderField: "Authorization")
             
             let json: NSData = data.data(using: String.Encoding.utf8)! as NSData
             
